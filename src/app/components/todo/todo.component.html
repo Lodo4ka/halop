@@ -1,0 +1,35 @@
+<div class="ui segment grid right aligned align-content-center p-08 main-color border-disabled">
+    <div class="five wide column a-s-c" *ngIf="!edit">
+        <div class="ui checkbox mr-1">
+            <sui-checkbox [(ngModel)]="status" (checkChange)="onToggleCheckbox()">Завершенное</sui-checkbox>
+        </div>
+        <button (click)="onEdit()" class="ui button-edit button">
+    <i class="edit icon disable-margin"></i>
+  </button>
+        <button (click)="onDelete(todo)" class="ui button-delete button"><i class="trash alternate icon disable-margin"></i></button>
+    </div>
+    <div class="ui message ten wide column floated left aligned margin-disabled text-light" *ngIf="!edit">
+        <div class="header" [ngStyle]="status ? {'text-decoration': 'line-through'} : {'text-decoration': 'none'}">
+            {{ todo.name }}
+        </div>
+        <p [ngStyle]="status ? {'text-decoration': 'line-through'} : {'text-decoration': 'none'}">{{ todo.description }}</p>
+    </div>
+
+    <div class="ui message ten wide column floated left aligned margin-disabled" *ngIf="edit">
+        <div class="header mb-1 d-flex">
+            <div class="ui input focus">
+                <input type="text" placeholder="{{ todo.name }}" [(ngModel)]="name">
+            </div>
+            <div *ngIf="edit" class="ml-auto">
+                <button (click)="onSave(todo)" class="ui button-edit button">
+          <i class="save icon disable-margin" aria-hidden="true"></i>
+        </button>
+            </div>
+        </div>
+        <div class="ui form">
+            <div class="field">
+                <textarea id="" cols="30" rows="10" [(ngModel)]="description" placeholder="{{ todo.description }}"></textarea>
+            </div>
+        </div>
+    </div>
+</div>

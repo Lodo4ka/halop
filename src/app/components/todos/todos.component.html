@@ -1,0 +1,4 @@
+<div class="ui segments p-1 mb-4">
+    <app-todo *ngFor="let todo of getAll() | async" [todo]="todo">
+    </app-todo>
+</div>

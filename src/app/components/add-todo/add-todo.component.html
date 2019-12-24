@@ -1,0 +1,22 @@
+<div style="text-align:center">
+    <sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+        <div class="header main-background">Создание задачи</div>
+        <div class="content main-background">
+            <div class="ui input d-block mb-1">
+                <input [(ngModel)]="name" type="text" placeholder="Название задачи" class="w-100 main-background">
+            </div>
+            <div class="ui input d-block w-100">
+                <input [(ngModel)]="description" type="text" placeholder="Описание задачи" class="w-100 main-background">
+            </div>
+        </div>
+        <div class="actions main-background">
+            <button class="ui green button" (click)="[modal.approve('done'), createTodo()]" autofocus>OK</button>
+        </div>
+    </sui-modal>
+</div>
+
+<div class="ui d-flex h-100">
+    <button class="ui background-green button ml-auto" (click)="show = true">
+    <i class="plus icon disable-margin"></i>
+  </button>
+</div>
